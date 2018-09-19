@@ -1,5 +1,4 @@
 import {ws, hostObj, clientId} from "./../../config.js"
-import fetch from "./../../fetch/index.js"
 // //获取应用实例
 const app = getApp()
 let doWorkTimer = {}
