@@ -1,5 +1,4 @@
 /**app.wxss**/
-@import "image.wxss";
 .container {
   height: 100vh;
   box-sizing: border-box;
