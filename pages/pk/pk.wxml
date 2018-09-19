@@ -1,0 +1,94 @@
+<view class="pkArea container">
+    <view class="matching" wx:if="{{step === 1}}">
+        <view class="search">
+            <image class="userAvatar" src="{{userInfo.avatar}}"></image>
+            <image class="scan" src="https://m.teacher.jiaofuyun.com/studentPK/images/weapp/scan_sector_bg.png"></image>
+        </view>
+        <view class="searchText">寻找对局...</view>
+    </view>
+    <view class="matched" wx:elif="{{step === 2}}">
+        <view class="leftBox fl {{isMove ? 'move' : ''}}">
+            <image class="fl leftAvatarBox" src="https://m.teacher.jiaofuyun.com/studentPK/images/weapp/mine_header_bg.png">
+                <image class="leftAvatar" src="{{userInfo.avatar}}"></image>
+            </image>
+            <text class="leftName po-a">{{userInfo.name}}</text>
+        </view>
+        <view class="rightBox fr {{isMove ? 'move' : ''}}">
+            <image class="fr rightAvatarBox" src="https://m.teacher.jiaofuyun.com/studentPK/images/weapp/opponent_header_bg.png">
+                <image class="rightAvatar" src="{{gamer.avatar}}"></image>
+            </image>
+            <text class="rightName po-a">{{gamer.name}}</text>
+        </view>
+        <image class="vsIcon {{isMove ? 'vsMove' : ''}}" src="https://m.teacher.jiaofuyun.com/studentPK/images/weapp/VS.png"></image>
+        <text wx:if="{{isMove}}" class="readyTime {{isMove ? 'move' : ''}}">等待对方准备...</text>
+    </view>
+    <view class="gaming" wx:elif="{{step === 3}}">
+        <view class="gameTitle po-r">
+            <image class="fl leftPlayer po-a {{isOver ? 'leaveToLeft' : ''}}" src="https://m.teacher.jiaofuyun.com/studentPK/images/weapp/mine_header_bg.png">
+                <image class="leftAvatar" src="{{userInfo.avatar}}"></image>
+            </image>
+            <view class="score po-a">
+                {{myRightAnswerNum}}-{{hisRightAnswerNum}}
+            </view>
+            <image class="fr rightPlayer po-a {{isOver ? 'leaveToLeft' : ''}}" src="https://m.teacher.jiaofuyun.com/studentPK/images/weapp/opponent_header_bg.png">
+                <image class="rightAvatar" src="{{gamer.avatar}}"></image>
+            </image>
+        </view>
+        <view class="gameBox po-a">
+            <!--<view class="po-a leftIntegral {{isOver ? 'leaveToLeft' : ''}}">-->
+                <!--<view class="fillL" style="height:{{Lheight + '%'}}"></view>-->
+            <!--</view>-->
+            <view class="po-a gameContent">
+                <view class="gameWord {{isNextWord ? 'opacity_fade_in' : ''}}">{{wordsArr[currentWordIndex].word}}</view>
+                <!--<view class="wordNum {{isNextNum ? 'wordNum_fade_in' : ''}}">第{{titleNumber + 1}}题！</view>-->
+                <view class="canvasBox">
+                    <canvas canvas-id="timeCanvas" class="canvas"></canvas>
+                </view>
+                <view class="answers {{isNextAnswer ? 'answer_fade_in' : ''}}">
+                    <view class="answer {{wordsArr[currentWordIndex].state[index]}}" bindtap="chooseThis" data-index="{{index}}" wx:for="{{wordsArr[currentWordIndex].answerArr}}" wx:key="{{index}}">
+                        <text class="answerWord" data-index="{{index}}">{{item}}</text>
+                        <view class="po-a mine"></view>
+                        <view class="po-a his"></view>
+                    </view>
+                </view>
+            </view>
+            <!--<view class="po-a rightIntegral {{isOver ? 'leaveToRight' : ''}}">-->
+                <!--<view class="fillR" style="height:{{Rheight + '%'}}"></view>-->
+            <!--</view>-->
+        </view>
+    </view>
+    <view class="result" wx:elif="{{step === 4}}">
+        <image src="https://m.teacher.jiaofuyun.com/studentPK/images/weapp/win_bg.png" class="win" wx:if="{{isWin}}">YOU WIN!</image>
+        <image src="https://m.teacher.jiaofuyun.com/studentPK/images/weapp/YOULOSE.png" class="lose" wx:elif="{{!isWin}}">YOU LOSE!</image>
+        <view class="gameTitle po-r">
+            <image class="fl leftPlayer po-a {{isOver ? 'leaveToLeft' : ''}}" src="https://m.teacher.jiaofuyun.com/studentPK/images/weapp/mine_header_bg.png">
+                <image class="leftAvatar" src="{{userInfo.avatar}}"></image>
+                <image class="crown" wx:if="{{isWin}}" src="https://m.teacher.jiaofuyun.com/studentPK/images/weapp/crown.png"></image>
+            </image>
+            <view class="score po-a">
+                {{myRightAnswerNum}}-{{hisRightAnswerNum}}
+                <view class="doWorkTime po-a">
+                    <text class="myTime po-a">{{doWorkTime}}s</text>
+                    :
+                    <text class="hisTime po-a">{{hisDoworkTime}}s</text>
+                </view>
+            </view>
+            <image class="fr rightPlayer po-a {{isOver ? 'leaveToLeft' : ''}}" src="https://m.teacher.jiaofuyun.com/studentPK/images/weapp/opponent_header_bg.png">
+                <image class="rightAvatar" src="{{gamer.avatar}}"></image>
+                <image class="crown"  wx:if="{{!isWin}}" src="https://m.teacher.jiaofuyun.com/studentPK/images/weapp/crown.png"></image>
+            </image>
+            <text class="leftText po-a">{{userInfo.name}}</text>
+            <text class="rightText po-a">{{gamer.name}}</text>
+        </view>
+        <view class="words">
+            <view class="word" wx:for="{{wordsScore}}" wx:key="{{index}}">
+                <image class="myState po-a showRight" wx:if="{{item.myState}}" src="https://m.teacher.jiaofuyun.com/studentPK/images/weapp/right.png"></image>
+                <image class="myState po-a showErr" wx:elif="{{!item.myState}}" src="https://m.teacher.jiaofuyun.com/studentPK/images/weapp/error.png"></image>
+                <view class="oneWord fl">{{item.word}}</view>
+                <view class="Interpretation fr" style="width: 50%;">{{item.Interpretation}}</view>
+                <image class="hisState po-a showRight" wx:if="{{item.hisState}}" src="https://m.teacher.jiaofuyun.com/studentPK/images/weapp/right.png"></image>
+                <image class="hisState po-a showErr" wx:elif="{{!item.hisState}}" src="https://m.teacher.jiaofuyun.com/studentPK/images/weapp/error.png"></image>
+            </view>
+        </view>
+    </view>
+</view>

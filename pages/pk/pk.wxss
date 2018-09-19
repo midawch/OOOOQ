@@ -1,0 +1,571 @@
+.matching,.matched,.gaming,.result{
+    width: 100%;
+    height: 100vh;
+}
+.matching{
+}
+.search{
+    width: 630rpx;
+    height: 630rpx;
+    margin: 50rpx auto 0;
+    background-size: 100%;
+    position: relative;
+    background: url("https://m.teacher.jiaofuyun.com/studentPK/images/weapp/scan_bg.png") no-repeat center;
+    background-size: 100% 100%;
+}
+.searchText{
+    position: fixed;
+    bottom: 80rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font: bold 32rpx "PingFang";
+}
+.userAvatar{
+    width: 220rpx;
+    height: 220rpx;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    z-index: 99;
+}
+.scan{
+    width: 630rpx;
+    height: 630rpx;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-50rpx);
+    animation: circle 5s linear 0s infinite;
+    z-index: 66;
+}
+.matched{
+    position: relative;
+    background: url("https://m.teacher.jiaofuyun.com/studentPK/images/weapp/searchBg.png");
+    background-size: 100% 100%;
+}
+.gaming{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+.titleNumber{
+    font-family: 30rpx;
+}
+.result{
+}
+.matched .leftBox,.matched .rightBox{
+    width: 800rpx;
+    height: 172rpx;
+    transition: all .8s;
+}
+.leftBox{
+    position: absolute;
+    top: 100rpx;
+    left: 70rpx;
+    transform: translateX(-100%);
+}
+.leftBox .leftAvatarBox{
+    position: relative;
+    width: 261rpx;
+    height: 100%;
+}
+.leftBox .leftAvatarBox .leftAvatar{
+    position: absolute;
+    top: 20rpx;
+    right: 24rpx;
+    border-radius: 50%;
+    width: 132rpx;
+    height: 132rpx;
+    border: 2rpx solid #fff;
+}
+.leftBox .leftName{
+    left: 278rpx;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+}
+.gameTitle .crown{
+    position: absolute;
+    top: 2rpx;
+    width: 52rpx;
+    height: 42rpx;
+}
+.leftPlayer .crown{
+    right: 14rpx;
+}
+.rightPlayer .crown{
+    left: 64rpx;
+}
+.rightBox{
+    position: absolute;
+    right: 70rpx;
+    bottom: 200rpx;
+    transform: translateX(100%);
+}
+.rightBox .rightAvatarBox{
+    position: relative;
+    width: 261rpx;
+    height: 100%;
+}
+.rightBox .rightAvatarBox .rightAvatar{
+    position: absolute;
+    top: 20rpx;
+    left: 24rpx;
+    border-radius: 50%;
+    width: 132rpx;
+    height: 132rpx;
+    border: 2rpx solid #fff;
+}
+.rightBox .rightName{
+    right: 278rpx;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+}
+.vsIcon{
+    transition: all .8s;
+    position: absolute;
+    left: 50%;
+    top: 36%;
+    transform: translate(-50%,240%);
+    width: 340rpx;
+    height: 330rpx;
+    opacity: 0;
+}
+.move{
+    transform: translate(0%,0%);
+    opacity: 1;
+}
+.vsMove{
+    transform: translate(-50%,0%);
+    opacity: 1;
+}
+.readyTime{
+    position: absolute;
+    left: 0;
+    bottom: 80rpx;
+    width: 100%;
+    text-align: center;
+    font-size: 36rpx;
+    color: #b5dcfa;
+    opacity: 1;
+}
+.gameTitle{
+    width: 100%;
+    height: 130rpx;
+    margin-top: 40rpx;
+    position: relative;
+}
+.gameTitle .leftPlayer, .gameTitle .rightPlayer{
+    width: 196rpx;
+    height: 100%;
+}
+.gameTitle .leftPlayer{
+    top: 0;
+    left: 0;
+    animation: left_to_right .5s ease-in-out;
+    animation-fill-mode: forwards;
+}
+.gameTitle .leftPlayer.leaveToLeft{
+    animation: leave_To_Result_right_to_left .5s ease-in-out;
+    animation-fill-mode: forwards;
+}
+.gameTitle .leftPlayer .leftAvatar{
+    position: absolute;
+    top: 15rpx;
+    right: 15rpx;
+    width: 96rpx;
+    height: 96rpx;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+.gameTitle .rightPlayer{
+    top: 0;
+    right: 0;
+    animation: right_to_left .5s ease-in-out;
+    animation-fill-mode: forwards;
+}
+.gameTitle .rightPlayer.leaveToRight{
+    animation: leave_To_Result_left_to_right .5s ease-in-out;
+    animation-fill-mode: forwards;
+}
+.gameTitle .rightPlayer .rightAvatar{
+    position: absolute;
+    top: 15rpx;
+    left: 15rpx;
+    width: 96rpx;
+    height: 96rpx;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+.gaming .gameBox{
+    left: 60rpx;
+    right: 60rpx;
+    top: 200rpx;
+    bottom: 40rpx;
+}
+.gameBox .leftIntegral, .gameBox .rightIntegral{
+    width: 50rpx;
+    height: 100%;
+    top: 0;
+    background: #fff;
+}
+.gameBox .leftIntegral{
+    left: 0;
+    animation: left_to_right .5s ease-in-out;
+    animation-fill-mode: forwards;
+}
+.gameBox .leftIntegral.leaveToLeft{
+    animation: leave_To_Result_right_to_left .5s ease-in-out;
+    animation-fill-mode: forwards;
+}
+.gameBox .rightIntegral{
+    right: 0;
+    animation: right_to_left .5s ease-in-out;
+    animation-fill-mode: forwards;
+}
+.gameBox .rightIntegral.leaveToRight{
+    animation: leave_To_Result_left_to_right .5s ease-in-out;
+    animation-fill-mode: forwards;
+}
+.gameBox .gameContent{
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+.fillL,.fillR{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 0;
+    background: #000;
+    transition: all 1.5s;
+}
+.fillL{
+    height: 140rpx;
+}
+.fillR{
+    height: 240rpx;
+}
+.gameContent .gameWord{
+    width: 100%;
+    height: 16%;
+    flex-grow: 100;
+    font-family: SFUDinMitAlt,lucida grande,lucida sans unicode,lucida,helvetica,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+    color: #fff;
+    text-align: center;
+    font-size: 48rpx;
+    white-space: normal;
+    opacity: 0;
+}
+.gameContent .gameWord::before{
+    content: '';
+    display: inline-block;
+    vertical-align: bottom;
+    height: 100%;
+}
+.gameContent .gameWord.opacity_fade_in{
+    animation: opacity_fade_in .5s ease-out;
+    animation-fill-mode: forwards;
+}
+.gameContent .wordNum{
+    width: 100%;
+    height: 12%;
+    background: orangered;
+    text-align: center;
+    color: #fff;
+    font-size: 40rpx;
+    opacity: 0;
+}
+.gameContent .wordNum::before{
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+.gameContent .wordNum.wordNum_fade_in{
+    transform: translateX(-50%);
+    animation: wordGame_titleNumber 1.5s ease-out;
+    animation-fill-mode: forwards;
+}
+.gameContent .answers{
+     width: 100%;
+     height: 60%;
+     opacity: 0;
+}
+.gameContent .answers.answer_fade_in{
+    transform-origin: center 0;
+    animation: answer_fade_in 1.5s ease-in-out;
+    animation-fill-mode: forwards;
+}
+.gameContent .answers .answer{
+    box-sizing: border-box;
+    position: relative;
+    width: 630rpx;
+    height: 120rpx;
+    padding: 0 96rpx;
+    border-radius: 12rpx;
+    margin: 20rpx 0;
+    background: #fff;
+    font-size: 28rpx;
+    color: #515854;
+    -webkit-transition: opacity .25s ease-out;
+    transition: opacity .25s ease-out;
+    display: flex;
+    flex:1;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.gameContent .answers .answer .answerWord{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -webkit-line-clamp:2;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+}
+.gameContent .answers .right,.gameContent .answers .myRight,.gameContent .answers .hisRight, .gameContent .answers .answer.correct{
+    background-color: #52cc8f;
+    color: #fff;
+}
+.gameContent .answers .right .mine, .gameContent .answers .right .his{
+    display: block;
+    width: 96rpx;
+    height: 100%;
+    top: 0;
+    background: url("https://m.teacher.jiaofuyun.com/studentPK/images/weapp/right_white.png") no-repeat center;
+    background-size: 42rpx 29rpx;
+}
+.gameContent .answers .myRight .mine{
+    display: block;
+    width: 96rpx;
+    height: 100%;
+    top: 0;
+    background: url("https://m.teacher.jiaofuyun.com/studentPK/images/weapp/right_white.png") no-repeat center;
+    background-size: 42rpx 29rpx;
+}
+.gameContent .answers .myError .mine{
+    display: block;
+    width: 96rpx;
+    height: 100%;
+    top: 0;
+    background: url("https://m.teacher.jiaofuyun.com/studentPK/images/weapp/error_white.png") no-repeat center;
+    background-size: 33rpx 33rpx;
+}
+.gameContent .answers .hisRight .his{
+    display: block;
+    width: 96rpx;
+    height: 100%;
+    top: 0;
+    background: url("https://m.teacher.jiaofuyun.com/studentPK/images/weapp/right_white.png") no-repeat center;
+    background-size: 42rpx 29rpx;
+}
+.gameContent .answers .hisError .his{
+    display: block;
+    width: 96rpx;
+    height: 100%;
+    top: 0;
+    background: url("https://m.teacher.jiaofuyun.com/studentPK/images/weapp/error_white.png") no-repeat center;
+    background-size: 33rpx 33rpx;
+}
+.mine{
+    left: 0;
+    display: none;
+}
+.his{
+    right: 0;
+    display: none;
+}
+.gameContent .answers .error,.gameContent .answers .myError,.gameContent .answers .hisError{
+    background-color: #ff8e93;
+    color: #fff;
+    animation: error_fade_in .3s ease-out;
+    animation-fill-mode: forwards;
+
+}
+.gameContent .answers .error .mine, .gameContent .answers .error .his{
+    display: block;
+    width: 96rpx;
+    height: 100%;
+    top: 0;
+    background: url("https://m.teacher.jiaofuyun.com/studentPK/images/weapp/error_white.png") no-repeat center;
+    background-size: 33rpx 33rpx;
+}
+.gameContent .answers .hide{
+    opacity: 0;
+}
+.gameContent .answers .answer::before{
+}
+/*倒计时canvas*/
+.canvasBox{
+    width: 100%;
+    height: 76rpx;
+    position: relative;
+    margin: 120rpx 0 60rpx;
+}
+.canvas{
+    width: 76rpx;
+    height: 76rpx;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.result{
+
+}
+ .score{
+    width: 200rpx;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: #fff;
+    font: normal 88rpx "DINCond-Medium";
+}
+.score .doWorkTime{
+    text-align: center;
+    width: 100%;
+    font-size: 24rpx;
+    bottom: -10rpx;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.doWorkTime .myTime{
+    text-align: right;
+    left: 0;
+    bottom: 0;
+    width: 42%;
+}
+.doWorkTime .hisTime{
+    text-align: left;
+    right: 0;
+    bottom: 0;
+    width: 42%;
+}
+.result .win ,.result .lose{
+    display: block;
+    width: 394rpx;
+    height: 117rpx;
+    margin: 20rpx auto 0;
+}
+.result .leftText, .result .rightText{
+    bottom: -50rpx;
+    width: 50%;
+    color: #fff;
+    font-size: 28rpx;
+    box-sizing: border-box;
+}
+.leftText{
+    text-align: left;
+    padding-left: 50rpx;
+}
+.rightText{
+    text-align: right;
+    padding-right: 50rpx;
+}
+.result .gameTitle .leftPlayer{
+    transform: translateX(-60rpx);
+}
+.result .gameTitle .rightPlayer{
+    transform: translateX(60rpx);
+}
+.leftText{
+    left: 0;
+    transform: translateX(-60rpx);
+    animation: left_to_right .5s ease-in-out;
+    animation-fill-mode: forwards;
+ }
+.rightText{
+    right: 0;
+    transform: translateX(60rpx);
+    animation: right_to_left .5s ease-in-out;
+    animation-fill-mode: forwards;
+}
+.words{
+    width: 690rpx;
+    height: 490rpx;
+    background-color: #fff;
+    border-radius: 10rpx;
+    margin: 100rpx auto 0;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+}
+.words .word{
+    position: relative;
+    width: 100%;
+    height: 98rpx;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ccc;
+    padding: 0 53rpx;
+}
+.words .word:nth-of-type(5){
+    border: none;
+}
+.word .state{
+    position: absolute;
+    width: 16rpx;
+    height: 0;
+}
+.word .state.right{
+}
+.word .oneWord, .word .Interpretation{
+    height: 98rpx;
+    font-size: 24rpx;
+    color: #515854;
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+    /*flex-direction: column;*/
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    white-space:nowrap;
+    line-height: 98rpx;
+}
+.word .oneWord{
+    max-width: 40%;
+}
+.word .Interpretation{
+    max-width: 50%;
+    wdith: 50%;
+}
+.word .myState{
+    width: 24rpx;
+    height: 16rpx;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.word .hisState{
+    width: 24rpx;
+    height: 24rpx;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.word .showErr{
+    width: 24rpx;
+    height: 24rpx;
+}
+.word .showRight{
+    width: 24rpx;
+    height: 16rpx;
+}
+/*@keyframes leftBoxMove{*/
+    /*0%{*/
+        /*transform: translateX(-100%);*/
+        /*opacity: 1;*/
+    /*}*/
+    /*100%{*/
+        /*transform: translateX(0);*/
+        /*opacity: 1;*/
+    /*}*/
+/*}*/
+
