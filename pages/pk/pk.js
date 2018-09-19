@@ -660,9 +660,8 @@ Page({
       // 来自页面内转发按钮
     }
     return {
-      title: '燃烧我的卡路里',
+      title: '快来一起单词PK吧~~',
       path: 'pages/index/index',
-      imageUrl: 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2294284280,417112872&fm=27&gp=0.jpg',
       success: function (res) {
         // 转发成功
       }
