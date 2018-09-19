@@ -411,6 +411,7 @@ Page({
       wordsScore: wordsScore,
       isWin:isWin
     })
+    that.onShareAppMessage()
     let keyIsWin = isWin ? 1 : 0
     wx.request({
       url: hostObj.edit + "uid="+that.data.userInfo.userId+"&isWin=" + keyIsWin + '&clientId=' + clientId,
@@ -652,5 +653,19 @@ Page({
   // 绘制底色
   drawBackground: function () {
     this.drawCircle(0, 360, 0, this.data.settings.outerColor);
-  }
+  },
+  //分享处理
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+    }
+    return {
+      title: '燃烧我的卡路里',
+      path: 'pages/index/index',
+      imageUrl: 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2294284280,417112872&fm=27&gp=0.jpg',
+      success: function (res) {
+        // 转发成功
+      }
+    }
+  },
 })
