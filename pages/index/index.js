@@ -12,8 +12,24 @@ Page({
   },
   onLoad: function () {
     let that = this
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          wx.getUserInfo({
+            success: res => {
+              that.setData({
+                userInfo:{
+                  name: res.userInfo.nickName,
+                  avatar: res.userInfo.avatarUrl
+                },
+                hasUserInfo: true
+              })
+            }
+          })
+        }
+      }
+    })
     this.getAuth()
-
   },
   getAuth: function(){
     let that = this
@@ -25,6 +41,15 @@ Page({
           success: (res)=>{
             that.setData({
               openid: res.data.data.result.openid
+            })
+            wx.setStorage({
+              key: "userInfo",
+              data: {
+                userId : res.data.data.result.openid,
+                // userId : that.data.openid + new Date().getTime(),
+                name: that.data.userInfo.name,
+                avatar: that.data.userInfo.avatar
+              }
             })
             that.getGameInfo(res.data.data.result.openid)
           }
@@ -58,7 +83,27 @@ Page({
   playGame: function(){
 
   },
-  onGotUserInfo: function(e) {
+  getUserInfo: function(e) {
+    let that = this
+    let userInfo = e.detail.userInfo
+    that.setData({
+      userInfo:{
+        name: userInfo.nickName,
+        avatar: userInfo.avatarUrl
+      },
+      hasUserInfo: true
+    })
+    wx.setStorage({
+      key: "userInfo",
+      data: {
+        userId : that.data.openid,
+        // userId : that.data.openid + new Date().getTime(),
+        name: userInfo.nickName,
+        avatar: userInfo.avatarUrl
+      }
+    })
+  },
+  getUserInfoAgain: function(e){
     let that = this
     let userInfo = e.detail.userInfo
     wx.setStorage({
@@ -73,5 +118,5 @@ Page({
     wx.navigateTo({
       url: './../../pages/pk/pk'
     })
-  },
+  }
 })

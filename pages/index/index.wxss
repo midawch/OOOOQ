@@ -6,6 +6,7 @@
   border-radius: 12rpx;
   margin: 30rpx auto 0;
   overflow: hidden;
+  position: relative;
 }
 .userInfo .userAvatsr{
   display: block;
@@ -35,6 +36,15 @@
   border-radius: 12rpx;
   margin: 20rpx auto 0;
   overflow: hidden;
+}
+.getUserInfoBtn{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 271rpx;
+  height: 92rpx;
+  transform: translate(-50%,-50%);
+  background: #ccc;
 }
 .gameInfo .gameData{
   width: 100%;

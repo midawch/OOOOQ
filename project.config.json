@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -12,8 +12,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.0.4",
-	"appid": "wx5294dc95d2b656f6",
-	"projectname": "wordGame",
+	"appid": "wx8f31e9cd3d37af05",
+	"projectname": "wordsGame",
 	"isGameTourist": false,
 	"condition": {
 		"search": {

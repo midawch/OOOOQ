@@ -1,9 +1,12 @@
 <!--index.wxml-->
 <view class="container">
   <view class="userInfo">
-    <image class="userAvatsr" src="https://m.teacher.jiaofuyun.com/studentPK/images/weapp/avatar.jpg"></image>
-    <view class="name">倒车入库</view>
-    <view class="schoolClass">安徽省合肥市168中学 九年级二班</view>
+    <button class="getUserInfoBtn" wx:if="{{!hasUserInfo}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image class="userAvatsr" src="{{userInfo.avatar}}"></image>
+      <view class="name">{{userInfo.name}}</view>
+      <!--<view class="schoolClass">安徽省合肥市168中学 九年级二班</view>-->
+    </block>
   </view>
   <view class="gameInfo">
     <view class="gameData">
@@ -20,7 +23,7 @@
         <view>胜率</view>
       </view>
     </view>
-    <button open-type="getUserInfo" class="playGame" bindgetuserinfo="onGotUserInfo">
+    <button  class="playGame" open-type="getUserInfo" bindgetuserinfo="getUserInfoAgain">
       随机匹配
     </button>
   </view>

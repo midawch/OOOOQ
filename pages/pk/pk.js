@@ -270,6 +270,7 @@ Page({
       that.doOneWorkIng()
       // that.doOneWord(0)
       setTimeout(()=>{
+        //主流程在canvas定时器里
         that.initCanvas()
       },1500)
     }).exec()
@@ -286,7 +287,7 @@ Page({
     if(currentWordIndex >= that.data.wordsArr.length - 1){
       clearInterval(doWorkTimer)
       that.setData({
-        doWorkTime: doWorkTime.toFixed(2),
+        doWorkTime: doWorkTime.toFixed(2)  >= 50 ? 50 : doWorkTime.toFixed(2),
         hisDoworkTime: hisDoworkTime.toFixed(2) >= 50 ? 50 : hisDoworkTime.toFixed(2)
       })
       clearInterval(that.data.canvasTimer);
@@ -484,8 +485,7 @@ Page({
   },
   // canvas用到的方法
   initCanvas: function(opt){
-    let that = this
-    that.countdown()
+    this.countdown()
   },
   // 进度条动画
   countdown: function () {
@@ -527,6 +527,12 @@ Page({
               hisAnswersArr: that.data.hisAnswersArr,
             })
           }
+          that.sendSocketMessage(JSON.stringify({
+            code: 1,
+            msg: 'over time',
+            houseId: that.data.houseId,
+            userId: that.data.userInfo.userId,
+          }))
           if(that.data.step !== 3){
             return false
           }
@@ -656,9 +662,6 @@ Page({
   },
   //分享处理
   onShareAppMessage: function (res) {
-    if (res.from === 'button') {
-      // 来自页面内转发按钮
-    }
     return {
       title: '快来一起单词PK吧~~',
       path: 'pages/index/index',
