@@ -1,4 +1,4 @@
-export let state = 14
+export let state = 13
 export let clientId = 0
 export let host = 'https://prevm.teacher.jiaofuyun.com/'
 export let HOST = 'https://pk.ciwong.com/'
