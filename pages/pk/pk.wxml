@@ -89,6 +89,7 @@
                 <image class="hisState po-a showRight" wx:if="{{item.hisState}}" src="https://m.teacher.jiaofuyun.com/studentPK/images/weapp/right.png"></image>
                 <image class="hisState po-a showErr" wx:elif="{{!item.hisState}}" src="https://m.teacher.jiaofuyun.com/studentPK/images/weapp/error.png"></image>
             </view>
+            <button class="playAgain" bindtap="playAgain">再来一次</button>
         </view>
     </view>
 </view>

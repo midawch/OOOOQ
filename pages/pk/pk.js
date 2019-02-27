@@ -203,7 +203,7 @@ Page({
     }else if(data.answer.isRight === -1){
       //这是机器人，要本地来处理答案对错
       data.answer.isRight = false
-      hisDoworkTime = Number((data.answer.useTime / 1000).toFixed(2))
+      hisDoworkTime = data.answer.useTime
       if(that.data.wordsArr[data.answer.index].answer === data.answer.chooseIndex){
         data.answer.isRight = true
         that.data.hisRightAnswerNum += 1
@@ -287,8 +287,8 @@ Page({
     if(currentWordIndex >= that.data.wordsArr.length - 1){
       clearInterval(doWorkTimer)
       that.setData({
-        doWorkTime: doWorkTime.toFixed(2)  >= 50 ? 50 : doWorkTime.toFixed(2),
-        hisDoworkTime: hisDoworkTime.toFixed(2) >= 50 ? 50 : hisDoworkTime.toFixed(2)
+        doWorkTime: Number((doWorkTime / 1000).toFixed(2))  >= 50 ? 50 : Number((doWorkTime / 1000).toFixed(2)),
+        hisDoworkTime: Number((hisDoworkTime / 1000).toFixed(2)) >= 50 ? 50 : Number((hisDoworkTime / 1000).toFixed(2))
       })
       clearInterval(that.data.canvasTimer);
       clearInterval(that.data.restoreTimer);
@@ -310,7 +310,7 @@ Page({
       that.setNextAnswer(true)
       that.setNextWord(true)
       doWorkTimer = setInterval(()=>{
-        doWorkTime += 0.01
+        doWorkTime += 10
       },10)
       setTimeout(()=>{
         that.setData({
@@ -444,7 +444,7 @@ Page({
       houseId: that.data.houseId,
       userId: that.data.userInfo.userId,
       answer:{
-        useTime: Number(doWorkTime.toFixed(2)),
+        useTime: Number(doWorkTime),
         isRight: 1 ,
         chooseIndex: index,
         index: currentWordIndex
@@ -483,6 +483,16 @@ Page({
       wordsArr: wordsArr
     })
   },
+  playAgain: function(){
+    wx.navigateTo({
+      url: './../../pages/pk/pk'
+    })
+  },
+
+
+
+
+
   // canvas用到的方法
   initCanvas: function(opt){
     this.countdown()
@@ -502,11 +512,11 @@ Page({
         if (currentTime - oldTime >= allMs) {
           // 恢复满状态
           clearInterval(that.data.canvasTimer);
-          hisDoworkTime += 10
+          hisDoworkTime += 10000
           clearInterval(doWorkTimer)
 
           let data = {
-            useTime: doWorkTime.toFixed(2),
+            useTime: doWorkTime,
             isRight: 0 ,
             chooseIndex: -1
           }
@@ -517,6 +527,12 @@ Page({
               myAnswer: data,
               myAnswersArr: that.data.myAnswersArr,
             })
+            that.sendSocketMessage(JSON.stringify({
+              code: 1,
+              msg: 'over time',
+              houseId: that.data.houseId,
+              userId: that.data.userInfo.userId,
+            }))
           }
           if(JSON.stringify(that.data.hisAnswer) == "{}"){
             // data.chooseIndex = 3
@@ -527,12 +543,6 @@ Page({
               hisAnswersArr: that.data.hisAnswersArr,
             })
           }
-          that.sendSocketMessage(JSON.stringify({
-            code: 1,
-            msg: 'over time',
-            houseId: that.data.houseId,
-            userId: that.data.userInfo.userId,
-          }))
           if(that.data.step !== 3){
             return false
           }

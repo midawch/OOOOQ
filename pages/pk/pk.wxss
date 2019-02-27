@@ -490,7 +490,7 @@
 }
 .words{
     width: 690rpx;
-    height: 490rpx;
+    height: 604rpx;
     background-color: #fff;
     border-radius: 10rpx;
     margin: 100rpx auto 0;
@@ -512,6 +512,15 @@
     position: absolute;
     width: 16rpx;
     height: 0;
+}
+.playAgain{
+    width: 630rpx;
+    height: 98rpx;
+    background-color: #52cc8f;
+    text-align: center;
+    line-height: 98rpx;
+    color: #fff;
+    font-size: 32rpx;
 }
 .word .state.right{
 }

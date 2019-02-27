@@ -1,0 +1,9 @@
+<!--user.wxml-->
+<view class="container nobg">
+  <view class="logoArea">
+    <image src="./../../static/img/logo.png" alt="" class="logo"></image>
+    <h3>大侠，欢迎来到我的单词世界</h3>
+    <p>快来找人PK,看看谁的单词背的更熟吧</p>
+  </view>
+  <button class="getUserInfo" open-type="getUserInfo" bindgetuserinfo="getUserInfoAgain">开始PK</button>
+</view>
